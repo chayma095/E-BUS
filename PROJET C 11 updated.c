@@ -40,11 +40,11 @@ queueR* R=NULL;
 
 void menu(){
     printf("\nBIENVENUE DANS E-BUS\n");
-    printf("°Creer un nouveau compte voyageur\n");
-    printf("°Creer une nouvelle réservation\n");
-    printf("°Voir les details des bus\n");
-    printf("°Afficher et modifier les details d’une réservation\n");
-    printf("°Annulation de reservation\n");
+    printf("Â°Creer un nouveau compte voyageur\n");
+    printf("Â°Creer une nouvelle rÃ©servation\n");
+    printf("Â°Voir les details des bus\n");
+    printf("Â°Afficher et modifier les details dâ€™une rÃ©servation\n");
+    printf("Â°Annulation de reservation\n");
 }
 
 
@@ -53,7 +53,7 @@ void menu(){
 struct Voyageur* createTraveler(char* nom) {
     struct Voyageur* nvVoyageur = (struct Voyageur*)malloc(sizeof(struct Voyageur));
     if (nvVoyageur== NULL) {
-        printf("Erreur lors de l'allocation de la mémoire pour le voyageur.\n");
+        printf("Erreur lors de l'allocation de la mÃ©moire pour le voyageur.\n");
         return NULL;
     }
     struct Voyageur* tempv;
@@ -98,7 +98,7 @@ void enregistrerReservations() {
 struct Reservation* createReservation(int busId, int ID) {
     struct Reservation* nvReservation = (struct Reservation*)malloc(sizeof(struct Reservation));
     if (nvReservation == NULL) {
-        printf("Erreur lors de l'allocation de la mémoire pour la réservation.\n");
+        printf("Erreur lors de l'allocation de la mÃ©moire pour la rÃ©servation.\n");
         return NULL;
     }
     nvReservation->busId = busId;
@@ -111,7 +111,7 @@ struct Reservation* createReservation(int busId, int ID) {
 
 void reservation(){
     int busId,ID;
-    printf("Entrez le numéro de bus pour la réservation : ");
+    printf("Entrez le numÃ©ro de bus pour la rÃ©servation : ");
     scanf("%d",&busId);
     printf("Entrez votre identificateur de reservation:");
     scanf("%d",&ID);
@@ -131,21 +131,21 @@ void reservation(){
         tempo->siegeDispo--;
         (queueR->Rtail)->next=nvReservation;
         (queueR->Rtail)=nvReservation;
-        printf("reservation réussite!");
+        printf("reservation rÃ©ussite!");
 
     }
     else{
-        printf("désolé c'est complet!");
+        printf("dÃ©solÃ© c'est complet!");
     }
 
 
 }
 void detailsBus(){
-    printf("°LES DETAILS DES BUS°\n");
-    printf("le numéro du BUS\n");
-    printf("le départ du bus\n");
+    printf("Â°LES DETAILS DES BUSÂ°\n");
+    printf("le numÃ©ro du BUS\n");
+    printf("le dÃ©part du bus\n");
     printf("la destination du bus\n");
-    printf("les sièges disponibles dans le bus\n");
+    printf("les siÃ¨ges disponibles dans le bus\n");
     struct BUS* tempo=B;
     while(tempo!=NULL){
         printf("%d",tempo->busId);
@@ -213,26 +213,28 @@ int main(){
         printf("quelle option vous voulez?");
         scanf("%d",&option);
         if (option==1){
-                creerUnNouveauCompteVoyageur();
-                break;
+            creerUnNouveauCompteVoyageur();
+            break;
         }
         else if (option==2){
-                reservation();
-                break;
+            reservation();
+            break;
         }
         else if (option==3){
             detailsBus();
             break;
         }
         else if (option==4){
-                detailsReservation();
-                break;
+            detailsReservation();
+            break;
         }
         else if (option==5){
             annulationReservation();
+            break;
         }
-        else printf("option invalide");
-
+        else{
+            printf("ESSAYEZ DE NOUVEAU");
+        }    
     }while (option!=6);
 
 
